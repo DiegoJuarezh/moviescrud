@@ -1,0 +1,5 @@
+COMANDOS:
+
+ng serve -o 
+Crea un servidor local compilando los archivos de angular.
+
