@@ -1,30 +1,25 @@
 <h2>Crear Película</h2>
-<form>
+<div>
   <div class="form-group">
     <label for="name">Nombre</label>
-    <input type="text" class="form-control" id="name" placeholder="Ingresar Nombre">
+    <input [(ngModel)]="movie.name" type="text" class="form-control" id="name" placeholder="Ingresar Nombre">
   </div>
   <div class="form-group">
-    <label for="descripcion">Descripción</label>
-    <input type="text" class="form-control" id="descripcion" placeholder="Ingresar Descripción">
+    <label for="description">Descripción</label>
+    <textarea [(ngModel)]="movie.description" type="text" class="form-control" id="description" placeholder="Ingresar Descripción"></textarea>
   </div>
   <div class="form-group">
     <label for="genre">Género</label>
-    <input type="text" class="form-control" id="genre" placeholder="Ingresar Género">
+    <input [(ngModel)]="movie.genre" type="text" class="form-control" id="genre" placeholder="Ingresar Género">
   </div>
   <div class="form-group">
     <label for="duration">Duración</label>
-    <input type="text" class="form-control" id="duration" placeholder="Ingresar Duración">
+    <input [(ngModel)]="movie.duration" type="text" class="form-control" id="duration" placeholder="Ingresar Duración">
   </div>
   <div class="form-group">
     <label for="year">Año</label>
-    <input type="text" class="form-control" id="year" placeholder="Ingresar Año">
+    <input [(ngModel)]="movie.year" type="text" class="form-control" id="year" placeholder="Ingresar Año">
   </div>
 
-  
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <button type="submit" class="btn btn-primary btn-block">Guardar</button>
-</form>
+  <button (click)="saveMovie()" class="btn btn-primary btn-block">Guardar</button>
+</div>
