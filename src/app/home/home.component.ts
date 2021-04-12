@@ -9,14 +9,14 @@ import { Movie } from '../interfaces/movie';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  API_ENDPOINT = 'http://127.0.0.1:8000/api';
-  movies: Movie[];
+  movies: Movie[] = [];
   constructor(private movieService: MoviesService, private httpClient: HttpClient) {
-    this.movies = [];
-    httpClient.get(this.API_ENDPOINT + '/movies').subscribe( (data: any) => {// En lugar de 'any' era 'Movies[]'
-      console.log(data);
+    this.movieService.get().subscribe( (data: any) => {// En lugar de 'any' era 'Movies[]'
       this.movies = data;
-    } );
+    }, (error) => {
+      console.log(error);
+      alert('Ocurrio un error');
+    });
   }
 
   ngOnInit(): void {
