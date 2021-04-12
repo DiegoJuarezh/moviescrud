@@ -1,5 +1,12 @@
 COMANDOS:
 
 ng serve -o 
-Crea un servidor local compilando los archivos de angular.
+-Crea un servidor local compilando los archivos de angular.
 
+ng generate component home
+-Crea un Componente llamado 'home'
+
+Video 4/7
+Añadier interfazes y un nuevo servicio
+interfazes - Declarar estructuras de datos un poco mas complejas que una variable en TypeScript.
+nuevo servicio - Compartir cierta funcionalidad entre varios componentes.
