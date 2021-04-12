@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../interfaces/movie';
 import { MoviesService } from '../services/movies.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -8,6 +9,7 @@ import { MoviesService } from '../services/movies.service';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  // foundFilms: Film[] = [];
   movie: Movie = {
     name: "",
     description: "",
@@ -15,8 +17,30 @@ export class FormComponent implements OnInit {
     year: 0,
     duration: ""
   };
+  
+  id: any;
+  editing: boolean = false;
+  movies: Movie[] = [];
+  movie_TMP:any;
 
-  constructor(private moviesService: MoviesService) {
+  constructor(private moviesService: MoviesService, private activatedRoute: ActivatedRoute) {
+    this.id = this.activatedRoute.snapshot.params['id'];
+    // console.log(this.id);
+    if( this.id ){
+      this.editing = true;
+      this.moviesService.get().subscribe( (data:any) => { //data:Movie[]
+        this.movies = data;
+        this.movie_TMP = this.movies.find( (m) => { return m.id == this.id });
+        this.movie = this.movie_TMP;
+
+        // this.movie = this.movies.find( (m) => { return m.id == this.id });
+        console.log(this.movie);
+      }, (error) => {
+        console.log(error);
+      })
+    }else{
+      this.editing = true;
+    }
   }
 
   ngOnInit(): void {
