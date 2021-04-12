@@ -47,13 +47,23 @@ export class FormComponent implements OnInit {
   }
 
   saveMovie(){
-    this.moviesService.save(this.movie).subscribe( (data) => {
-      alert('Pelicula Guardada');
-      console.log(data);
-    }, (error) => {
-      alert('Occurrio un error');
-      console.log(error);
-    } )
+    if( this.editing ){
+      this.moviesService.put(this.movie).subscribe( (data) => {
+        alert('Pelicula Actualizada');
+        console.log(data);
+      }, (error) => {
+        alert('Occurrio un error');
+        console.log(error);
+      } )
+    }else{
+      this.moviesService.save(this.movie).subscribe( (data) => {
+        alert('Pelicula Guardada');
+        console.log(data);
+      }, (error) => {
+        alert('Occurrio un error');
+        console.log(error);
+      } )
+    }
   }
 
 }

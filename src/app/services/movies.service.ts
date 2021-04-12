@@ -18,4 +18,9 @@ export class MoviesService {
     const headers = new HttpHeaders({'Content-Type':'application/json'});
     return this.httpClient.post(this.API_ENDPOINT + '/movies', movie, {headers: headers});
   }
+
+  put(movie:Movie){
+    const headers = new HttpHeaders({'Content-Type':'application/json'});
+    return this.httpClient.put(this.API_ENDPOINT + '/movies/' + movie.id, movie, {headers: headers});
+  }
 }
