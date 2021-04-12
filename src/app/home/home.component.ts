@@ -21,4 +21,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  delete(id:any){
+    this.movieService.delete(id).subscribe( (data) => {
+      alert("Eliminado con éxito");
+    }, (error) => {
+      console.log(error);
+      alert('Ocurrio un error');
+    });
+  }
 }
