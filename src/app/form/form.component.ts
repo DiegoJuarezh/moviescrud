@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../interfaces/movie';
+import { MoviesService } from '../services/movies.service';
 
 @Component({
   selector: 'app-form',
@@ -15,13 +16,20 @@ export class FormComponent implements OnInit {
     duration: ""
   };
 
-  constructor() { }
+  constructor(private moviesService: MoviesService) {
+  }
 
   ngOnInit(): void {
   }
 
   saveMovie(){
-    console.log(this.movie);
+    this.moviesService.save(this.movie).subscribe( (data) => {
+      alert('Pelicula Guardada');
+      console.log(data);
+    }, (error) => {
+      alert('Occurrio un error');
+      console.log(error);
+    } )
   }
 
 }
